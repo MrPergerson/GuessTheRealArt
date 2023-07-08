@@ -717,7 +717,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1550830994}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: LoadNextScene
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1013,6 +1013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371b427599f2a214ba2ac0a2049b5a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 0
 --- !u!4 &1619014415
 Transform:
   m_ObjectHideFlags: 0

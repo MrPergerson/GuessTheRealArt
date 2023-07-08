@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
-using TreeEditor;
 
 public class GameManager : MonoBehaviour
 {
@@ -66,6 +65,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(index + 1);
     }
 
+    public void StartGame()
+    {
+        level = 1;
+        SceneManager.LoadScene("Main");
+    }
+
     public void ReturnToMenu()
     {
         SceneManager.LoadScene(0);
@@ -73,15 +78,20 @@ public class GameManager : MonoBehaviour
 
     public void LoadLevel(int level)
     {
+        //print(level + " >= " + levels.Length);
         if (level > levels.Length)
         {
-            Debug.LogError("Tried to load level " + level + " that doesn't exist");
-            return;
+            // Then there are no more levels, the game is over
+            SceneManager.LoadScene("Score");
+        }
+        else
+        {
+        this.level = level;
+        SceneManager.LoadScene("Main");
+
         }
 
 
-        this.level = level;
-        SceneManager.LoadScene("Main");
     }
 
     private void Update()
@@ -99,4 +109,5 @@ public struct Level
 {
     public string name;
     public string source;
+    public int answer;
 }

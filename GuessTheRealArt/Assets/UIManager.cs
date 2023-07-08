@@ -14,4 +14,9 @@ public class UIManager : MonoBehaviour
     {
         GameManager.instance.ReturnToMenu();
     }
+    
+    public void StartGame()
+    {
+        GameManager.instance.StartGame();
+    }
 }
