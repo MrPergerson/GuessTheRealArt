@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class GrabImages : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public int folder = 0;
+
     void Start()
     {
         var sprites = Resources.LoadAll<Sprite>("test");
