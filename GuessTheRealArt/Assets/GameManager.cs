@@ -43,9 +43,9 @@ public class GameManager : MonoBehaviour
         }
 
 
-        LoadPrompts(correctPrompts, "Assets/prompts/that-is-correct.txt");
-        LoadPrompts(incorrectPrompts, "Assets/prompts/not-correct.txt");
-        LoadPrompts(introPrompts, "Assets/prompts/which-is-fake.txt");
+        LoadPrompts(correctPrompts, "prompts/that-is-correct");
+        LoadPrompts(incorrectPrompts, "prompts/not-correct");
+        LoadPrompts(introPrompts, "prompts/which-is-fake");
 
     }
 
@@ -116,15 +116,15 @@ public class GameManager : MonoBehaviour
     private void LoadPrompts(List<string> list, string path)
     {
 
-        if (File.Exists(path))
+        TextAsset textAsset = Resources.Load<TextAsset>(path);
+
+        if (textAsset != null)
         {
-            using (StreamReader reader = new StreamReader(path))
+            string[] lines = textAsset.text.Split('\n');
+
+            foreach (string line in lines)
             {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    list.Add(line);
-                }
+                list.Add(line);
             }
         }
         else
