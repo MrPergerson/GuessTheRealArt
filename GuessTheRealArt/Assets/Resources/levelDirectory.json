@@ -18,5 +18,25 @@
         "name" : "Holbein",
         "source" : "holbein",
         "answer" : "1"
+    },
+    {
+        "name" : "Kahlo",
+        "source" : "kahlo",
+        "answer" : "1"
+    },
+    {
+        "name" : "Lichtenstein",
+        "source" : "lichtenstein",
+        "answer" : "4"
+    },
+    {
+        "name" : "Magritte",
+        "source" : "magritte",
+        "answer" : "4"
+    },
+    {
+        "name" : "Matisse",
+        "source" : "matisse",
+        "answer" : "1"
     }
 ]
