@@ -153,7 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageRoot: {fileID: 657903778}
-  nextLevelLoadDelay: 3
+  text: {fileID: 439681791}
+  nextLevelLoadDelay: 4
 --- !u!4 &89874200
 Transform:
   m_ObjectHideFlags: 0
@@ -699,6 +700,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
+  correctPrompts: []
+  incorrectPrompts: []
+  introPrompts: []
 --- !u!4 &979507317
 Transform:
   m_ObjectHideFlags: 0

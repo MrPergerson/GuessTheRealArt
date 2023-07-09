@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
     public int level;
     private Level[] levels;
 
+    public List<string> correctPrompts = new List<string>();
+    public List<string> incorrectPrompts = new List<string>();
+    public List<string> introPrompts = new List<string>();
+
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -36,6 +41,11 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("JSON file not found: " + jsonPath);
         }
+
+
+        LoadPrompts(correctPrompts, "Assets/prompts/that-is-correct.txt");
+        LoadPrompts(incorrectPrompts, "Assets/prompts/not-correct.txt");
+        LoadPrompts(introPrompts, "Assets/prompts/which-is-fake.txt");
 
     }
 
@@ -100,6 +110,26 @@ public class GameManager : MonoBehaviour
         {
             Application.Quit();
 
+        }
+    }
+
+    private void LoadPrompts(List<string> list, string path)
+    {
+
+        if (File.Exists(path))
+        {
+            using (StreamReader reader = new StreamReader(path))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    list.Add(line);
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("Text file not found: " + path);
         }
     }
 }

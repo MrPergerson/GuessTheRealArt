@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -7,6 +8,7 @@ using UnityEngine.UIElements;
 public class LevelManager : MonoBehaviour
 {
     public Transform imageRoot;
+    public TextMeshProUGUI text;
 
     private SelectableChoice[] choices;
 
@@ -40,6 +42,14 @@ public class LevelManager : MonoBehaviour
 
 
         }
+
+        text.text = GetRandomPrompt(GameManager.instance.introPrompts);
+
+    }
+
+    public string GetRandomPrompt(List<string> prompts)
+    {
+        return prompts[Random.Range(0, prompts.Count)];
     }
 
     public void LoadImages(string source)
@@ -68,7 +78,7 @@ public class LevelManager : MonoBehaviour
             choice = choices[0];         
         */
 
-        print("Selected " + index + " | Current index " + choice.transform.GetSiblingIndex() + " | Answer: " + answer);
+        //print("Selected " + index + " | Current index " + choice.transform.GetSiblingIndex() + " | Answer: " + answer);
 
         levelCompleted = true;
 
@@ -77,13 +87,15 @@ public class LevelManager : MonoBehaviour
             
             ColorBlock colors = choice.colors;
             colors.disabledColor = Color.green;
-            choice.colors = colors;        
+            choice.colors = colors;
+            text.text = GetRandomPrompt(GameManager.instance.correctPrompts);
         } 
         else
         {
             ColorBlock colors = choice.colors;
             colors.disabledColor = Color.red;
             choice.colors = colors;
+            text.text = GetRandomPrompt(GameManager.instance.incorrectPrompts);
         }
 
         for (int i = 0; i < choices.Length; i++)
