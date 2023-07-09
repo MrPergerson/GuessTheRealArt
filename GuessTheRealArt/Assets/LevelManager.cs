@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,6 +12,8 @@ public class LevelManager : MonoBehaviour
     public TextMeshProUGUI text;
 
     private SelectableChoice[] choices;
+
+    private int[] choiceOrder = { 0, 1, 2, 3 };
 
     private Level levelData;
 
@@ -44,6 +47,9 @@ public class LevelManager : MonoBehaviour
         }
 
         text.text = GetRandomPrompt(GameManager.instance.introPrompts);
+
+        ShuffleChoices();
+
 
     }
 
@@ -110,5 +116,29 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(nextLevelLoadDelay);
 
         GameManager.instance.LoadLevel(GameManager.instance.level + 1);
+    }
+
+    void Shuffle(int[] array)
+    {
+        int n = array.Length;
+        while(n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n + 1);
+            int temp = array[k];
+            array[k] = array[n];
+            array[n] = temp;
+        }
+    }
+    
+    void ShuffleChoices()
+    {
+        Shuffle(choiceOrder);
+        //print(choiceOrder[0] + " " + choiceOrder[1] + " " + choiceOrder[2] + " " + choiceOrder[3]);
+
+        for (int i = 0; i < choiceOrder.Length; i++)
+        {
+            choices[i].transform.SetSiblingIndex(choiceOrder[i]);  
+        }
     }
 }

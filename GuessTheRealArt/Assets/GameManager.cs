@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
 
+        int seed = (int)System.DateTime.Now.Ticks;
+        UnityEngine.Random.InitState(seed);
+
         string jsonPath = "levelDirectory";
         TextAsset jsonAsset = Resources.Load<TextAsset>(jsonPath);
 
@@ -47,7 +50,7 @@ public class GameManager : MonoBehaviour
 
         LoadPrompts(correctPrompts, "prompts/that-is-correct");
         LoadPrompts(incorrectPrompts, "prompts/not-correct");
-        LoadPrompts(introPrompts, "prompts/which-is-fake");
+        LoadPrompts(introPrompts, "prompts/which-is-real");
 
     }
 
