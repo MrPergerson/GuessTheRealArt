@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public int level;
     private Level[] levels;
 
+    public int answeredCorrectly = 0;
+
     public List<string> correctPrompts = new List<string>();
     public List<string> incorrectPrompts = new List<string>();
     public List<string> introPrompts = new List<string>();
@@ -78,6 +80,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         level = 1;
+        answeredCorrectly = 0;
         SceneManager.LoadScene("Main");
     }
 
@@ -132,6 +135,13 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Text file not found: " + path);
         }
     }
+
+
+    public int GetLevelCount()
+    {
+        return levels.Length;
+    }
+
 }
 
 [System.Serializable]

@@ -89,6 +89,7 @@ public class LevelManager : MonoBehaviour
             colors.disabledColor = Color.green;
             choice.colors = colors;
             text.text = GetRandomPrompt(GameManager.instance.correctPrompts);
+            GameManager.instance.answeredCorrectly += 1;
         } 
         else
         {
