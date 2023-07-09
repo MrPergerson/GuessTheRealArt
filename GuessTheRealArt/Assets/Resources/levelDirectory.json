@@ -1,5 +1,10 @@
 [
     {
+        "name" : "Botticelli",
+        "source" : "botticelli",
+        "answer" : "4"
+    },
+    {
         "name" : "Caravaggio",
         "source" : "caravaggio",
         "answer" : "4"
@@ -7,6 +12,11 @@
     {
         "name" : "Durer",
         "source" : "durer",
+        "answer" : "1"
+    },
+    {
+        "name" : "Holbein",
+        "source" : "holbein",
         "answer" : "1"
     }
 ]
