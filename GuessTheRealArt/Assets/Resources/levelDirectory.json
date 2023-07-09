@@ -38,5 +38,30 @@
         "name" : "Matisse",
         "source" : "matisse",
         "answer" : "1"
+    },
+    {
+        "name" : "Adolph-Von-Menzel-The-Flute-Concert-at-Sanssouci-sketch",
+        "source" : "Adolph-Von-Menzel-The-Flute-Concert-at-Sanssouci-sketch",
+        "answer" : "1"
+    },
+    {
+        "name" : "Agnolo-Bronzino-Venus-Cupid-and-Time-Allegory-of-Lust",
+        "source" : "Agnolo-Bronzino-Venus-Cupid-and-Time-Allegory-of-Lust",
+        "answer" : "1"
+    },
+    {
+        "name" : "Albert-Bierstadt-Among-the-Sierra-Nevada-Mountains-Californi",
+        "source" : "Albert-Bierstadt-Among-the-Sierra-Nevada-Mountains-Californi",
+        "answer" : "1"
+    },
+    {
+        "name" : "Albert-Bierstadt-Deer-in-a-Clearing-S",
+        "source" : "Albert-Bierstadt-Deer-in-a-Clearing-S",
+        "answer" : "1"
+    },
+    {
+        "name" : "Albert-Bierstadt-Forest-Sunrise",
+        "source" : "Albert-Bierstadt-Forest-Sunrise",
+        "answer" : "1"
     }
 ]
