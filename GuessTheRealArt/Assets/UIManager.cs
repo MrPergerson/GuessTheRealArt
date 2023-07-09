@@ -19,4 +19,14 @@ public class UIManager : MonoBehaviour
     {
         GameManager.instance.StartGame();
     }
+
+    public void QuitGame()
+    {
+        GameManager.instance.QuitGame();
+    }
+
+    public void GotoCredits()
+    {
+        GameManager.instance.GotoCredits();
+    }
 }

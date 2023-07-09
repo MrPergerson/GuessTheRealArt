@@ -92,6 +92,16 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void GotoCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
     public void LoadLevel(int level)
     {
         //print(level + " >= " + levels.Length);
@@ -108,15 +118,6 @@ public class GameManager : MonoBehaviour
         }
 
 
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            Application.Quit();
-
-        }
     }
 
     private void LoadPrompts(List<string> list, string path)
