@@ -1,17 +1,12 @@
 [
     {
-        "name" : "Albrecht",
-        "source" : "albrecht",
-        "answer" : "1"
-    },
-    {
         "name" : "Caravaggio",
         "source" : "caravaggio",
         "answer" : "4"
     },
     {
-        "name" : "Mondrian",
-        "source" : "mondrian",
-        "answer" : "4"
+        "name" : "Durer",
+        "source" : "durer",
+        "answer" : "1"
     }
 ]
