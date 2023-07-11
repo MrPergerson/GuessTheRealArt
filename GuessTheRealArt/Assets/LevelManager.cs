@@ -6,19 +6,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
+/* LevelManager
+ * 
+ * Responsibities
+ * - Load choices in Main scene
+ * - Handle selected choice
+ * - Display text prompts
+ * 
+ */
+
 public class LevelManager : MonoBehaviour
 {
     public Transform imageRoot;
     public TextMeshProUGUI text;
-
-    private SelectableChoice[] choices;
-
-    private int[] choiceOrder = { 0, 1, 2, 3 };
-
-    private Level levelData;
-
     public int nextLevelLoadDelay = 2;
     bool levelCompleted = false;
+
+    private SelectableChoice[] choices;
+    private int[] choiceOrder = { 0, 1, 2, 3 };
+    private Level levelData;
 
 
     private void Awake()
@@ -26,6 +32,7 @@ public class LevelManager : MonoBehaviour
         choices = new SelectableChoice[imageRoot.childCount];
     }
 
+    // Load images and shuffle options. Assign each choice with a callback to SelectChoice
     private void Start()
     {
         if (imageRoot == null) Debug.LogError("LevelManager - imageRoot is not set!");
@@ -53,51 +60,28 @@ public class LevelManager : MonoBehaviour
 
     }
 
-    public string GetRandomPrompt(List<string> prompts)
-    {
-        return prompts[Random.Range(0, prompts.Count)];
-    }
-
-    public void LoadImages(string source)
-    {
-        
-
-        var sprites = Resources.LoadAll<Sprite>(source);
-
-        for (int i = 0; i < sprites.Length; i++)
-        {
-            imageRoot.transform.GetChild(i).GetComponent<UnityEngine.UI.Image>().sprite = sprites[i];
-        }
-    }
-
+    // Determine if player selected the correct or wrong choice
     public void SelectChoice(int index)
     {
-        if(levelCompleted) return;
+        if (levelCompleted) return;
 
         int answer = levelData.answer;
         var choice = choices[index - 1];
-
-        /*
-        if (index == 1) // WORKAROUND: Idk why but we have to switch the ends. 0 points to 3 and 3 points to 0....I really don't know why
-            choice = choices[choices.Length - 1];
-        else if(index == choices.Length)
-            choice = choices[0];         
-        */
 
         //print("Selected " + index + " | Current index " + choice.transform.GetSiblingIndex() + " | Answer: " + answer);
 
         levelCompleted = true;
 
-        if (index == answer)
+        if (index == answer) // You guess correctly!
         {
-            
+
             ColorBlock colors = choice.colors;
             colors.disabledColor = Color.green;
             choice.colors = colors;
             text.text = GetRandomPrompt(GameManager.instance.correctPrompts);
             GameManager.instance.answeredCorrectly += 1;
-        } 
-        else
+        }
+        else // better luck next time :)
         {
             ColorBlock colors = choice.colors;
             colors.disabledColor = Color.red;
@@ -110,6 +94,17 @@ public class LevelManager : MonoBehaviour
 
         StartCoroutine(LoadNextLevelWithDelay());
     }
+
+    public void LoadImages(string source)
+    {   
+        var sprites = Resources.LoadAll<Sprite>(source);
+
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            imageRoot.transform.GetChild(i).GetComponent<UnityEngine.UI.Image>().sprite = sprites[i];
+        }
+    }
+
 
     IEnumerator LoadNextLevelWithDelay()
     {
@@ -140,5 +135,10 @@ public class LevelManager : MonoBehaviour
         {
             choices[i].transform.SetSiblingIndex(choiceOrder[i]);  
         }
+    }
+
+    public string GetRandomPrompt(List<string> prompts)
+    {
+        return prompts[Random.Range(0, prompts.Count)];
     }
 }

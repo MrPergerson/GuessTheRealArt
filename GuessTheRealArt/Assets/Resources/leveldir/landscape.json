@@ -1,0 +1,22 @@
+[
+    {
+        "name" : "Botticelli",
+        "source" : "landscape/botticelli",
+        "answer" : "4"
+    },
+    {
+        "name" : "Caravaggio",
+        "source" : "landscape/caravaggio",
+        "answer" : "4"
+    },
+    {
+        "name" : "Durer",
+        "source" : "landscape/durer",
+        "answer" : "1"
+    },
+    {
+        "name" : "Holbein",
+        "source" : "landscape/holbein",
+        "answer" : "1"
+    }
+]

@@ -5,12 +5,23 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
 
+/*  GameManager
+ *  
+ *  Responsiblies
+ *  - Parse and cache category and leveldir json files
+ *  - Store text prompts
+ *  - Scene management 
+ *  - Game state
+ */
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    private Category[] categories;
+
     public int level;
-    private Level[] levels;
+    private Level[] selectedLevels;
 
     public int answeredCorrectly = 0;
 
@@ -18,7 +29,7 @@ public class GameManager : MonoBehaviour
     public List<string> incorrectPrompts = new List<string>();
     public List<string> introPrompts = new List<string>();
 
-
+    // load category list and prompts; initialize values
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -34,13 +45,13 @@ public class GameManager : MonoBehaviour
         int seed = (int)System.DateTime.Now.Ticks;
         UnityEngine.Random.InitState(seed);
 
-        string jsonPath = "levelDirectory";
+        string jsonPath = "categoryList";
         TextAsset jsonAsset = Resources.Load<TextAsset>(jsonPath);
 
         if (jsonAsset != null) // thanks chatgpt
         {
             string jsonContent = jsonAsset.text;
-            levels = ParseJsonArray<Level>(jsonContent);
+            categories = ParseJsonArray<Category>(jsonContent);
         }
         else
         {
@@ -54,23 +65,30 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private T[] ParseJsonArray<T>(string json)
+    // Caches the level directory json file for the specified category
+    // This must be called before a level is loaded -- TODO: Add error handling
+    public void SelectCategory(int category)
     {
-        string fixedJson = "{\"array\":" + json + "}";
-        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(fixedJson);
-        return wrapper.array;
+        string jsonPath = categories[category].source;
+        TextAsset jsonAsset = Resources.Load<TextAsset>(jsonPath);
+
+        if (jsonAsset != null) 
+        {
+            string jsonContent = jsonAsset.text;
+            selectedLevels = ParseJsonArray<Level>(jsonContent);
+        }
+        else
+        {
+            Debug.LogError("JSON file not found: " + jsonPath);
+        }
+
+        level = 1;
+        SceneManager.LoadScene("Main");
+
+
     }
 
-    [System.Serializable]
-    private class Wrapper<T>
-    {
-        public T[] array;
-    }
-
-    public Level GetCurrentLevel()
-    {
-        return levels[level - 1];
-    }
+    // Scene Management -----
 
     public void LoadNextScene()
     {
@@ -84,7 +102,7 @@ public class GameManager : MonoBehaviour
     {
         level = 1;
         answeredCorrectly = 0;
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("CategorySelect");
     }
 
     public void ReturnToMenu()
@@ -105,7 +123,7 @@ public class GameManager : MonoBehaviour
     public void LoadLevel(int level)
     {
         //print(level + " >= " + levels.Length);
-        if (level > levels.Length)
+        if (level > selectedLevels.Length)
         {
             // Then there are no more levels, the game is over
             SceneManager.LoadScene("Score");
@@ -120,6 +138,8 @@ public class GameManager : MonoBehaviour
 
     }
 
+    // -----------------------
+    
     private void LoadPrompts(List<string> list, string path)
     {
 
@@ -140,10 +160,27 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public int GetLevelCount()
     {
-        return levels.Length;
+        return selectedLevels.Length;
+    }
+
+    public Level GetCurrentLevel()
+    {
+        return selectedLevels[level - 1];
+    }
+
+    private T[] ParseJsonArray<T>(string json)
+    {
+        string fixedJson = "{\"array\":" + json + "}";
+        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(fixedJson);
+        return wrapper.array;
+    }
+
+    [System.Serializable]
+    private class Wrapper<T>
+    {
+        public T[] array;
     }
 
 }
@@ -154,4 +191,11 @@ public struct Level
     public string name;
     public string source;
     public int answer;
+}
+
+[System.Serializable]
+public struct Category
+{
+    public string name;
+    public string source;
 }
