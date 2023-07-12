@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    private Category[] categories;
+    private Category[] _categories;
 
     public int level;
     private Level[] selectedLevels;
@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
     public List<string> correctPrompts = new List<string>();
     public List<string> incorrectPrompts = new List<string>();
     public List<string> introPrompts = new List<string>();
+
+    public Category[] Categories { 
+        get { return _categories; } 
+        private set { _categories = value; }
+    }
 
     // load category list and prompts; initialize values
     private void Awake()
@@ -51,7 +56,7 @@ public class GameManager : MonoBehaviour
         if (jsonAsset != null) // thanks chatgpt
         {
             string jsonContent = jsonAsset.text;
-            categories = ParseJsonArray<Category>(jsonContent);
+            Categories = ParseJsonArray<Category>(jsonContent);
         }
         else
         {
@@ -69,7 +74,7 @@ public class GameManager : MonoBehaviour
     // This must be called before a level is loaded -- TODO: Add error handling
     public void SelectCategory(int category)
     {
-        string jsonPath = categories[category].source;
+        string jsonPath = Categories[category].source;
         TextAsset jsonAsset = Resources.Load<TextAsset>(jsonPath);
 
         if (jsonAsset != null) 
