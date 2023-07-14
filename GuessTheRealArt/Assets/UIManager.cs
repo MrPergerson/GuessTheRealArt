@@ -29,4 +29,9 @@ public class UIManager : MonoBehaviour
     {
         GameManager.instance.GotoCredits();
     }
+
+    public void SelectCategory(int category)
+    {
+        GameManager.instance.SelectCategory(category);
+    }
 }
