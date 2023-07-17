@@ -1,10 +1,12 @@
 [
     {
         "name" : "Landscapes",
-        "source" : "leveldir/landscape"
+        "source" : "leveldir/landscape",
+        "thumbnail" : "landscape/thumbnail"
     },
     {
         "name" : "Blue",
-        "source" : "leveldir/blue"
+        "source" : "leveldir/blue",
+        "thumbnail" : "blue/thumbnail"
     }
 ]

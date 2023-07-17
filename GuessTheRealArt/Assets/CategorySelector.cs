@@ -4,6 +4,7 @@ using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static Unity.VisualScripting.Member;
 
 public class CategorySelector : MonoBehaviour
 {
@@ -56,6 +57,15 @@ public class CategorySelector : MonoBehaviour
                 var c = categoryIndex;
                 selections[categoryIndex].button.onClick.AddListener(() => GameManager.instance.SelectCategory(c));
                 selections[categoryIndex].title.text = categories[c].name;
+
+                var thumbnail = Resources.Load<Sprite>(categories[c].thumbnail);
+                if (thumbnail != null)
+                    selections[categoryIndex].image.sprite = thumbnail;
+                else
+                {
+                    Debug.LogError("Thumbnail.png not found in " + categories[c].thumbnail);
+                }
+                
                 categoryIndex++;
             }
 

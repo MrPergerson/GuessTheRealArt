@@ -203,4 +203,5 @@ public struct Category
 {
     public string name;
     public string source;
+    public string thumbnail;
 }
