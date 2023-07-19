@@ -1,0 +1,22 @@
+[
+    {
+        "name" : "Kahlo",
+        "source" : "blue/kahlo",
+        "answer" : "1"
+    },
+    {
+        "name" : "Lichtenstein",
+        "source" : "blue/lichtenstein",
+        "answer" : "4"
+    },
+    {
+        "name" : "Magritte",
+        "source" : "blue/magritte",
+        "answer" : "4"
+    },
+    {
+        "name" : "Matisse",
+        "source" : "blue/matisse",
+        "answer" : "1"
+    }
+]
