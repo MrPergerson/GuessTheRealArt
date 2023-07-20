@@ -275,6 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3943716729066574184}
   - component: {fileID: 8998801472354218141}
+  - component: {fileID: 249363173400689977}
   m_Layer: 5
   m_Name: GallerySelection
   m_TagString: Untagged
@@ -330,6 +331,22 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &249363173400689977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3603657083851649235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c33ee917b0cbe4ab1a171a15f7094a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: {fileID: 7341175623175230740}
+  button: {fileID: 8771706334298733726}
+  score: {fileID: 8255401284006371885}
+  status: {fileID: 642700014137688884}
 --- !u!1 &4766808856041148887
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,7 +572,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Visit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -771,7 +788,7 @@ GameObject:
   - component: {fileID: 9177783727670334710}
   - component: {fileID: 642700014137688884}
   m_Layer: 5
-  m_Name: Stats
+  m_Name: Status
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
