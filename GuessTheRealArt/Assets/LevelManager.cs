@@ -99,7 +99,7 @@ public class LevelManager : MonoBehaviour
     {   
         var sprites = Resources.LoadAll<Sprite>(source);
 
-        for (int i = 0; i < sprites.Length; i++)
+        for (int i = 0; i < 4; i++)
         {
             imageRoot.transform.GetChild(i).GetComponent<UnityEngine.UI.Image>().sprite = sprites[i];
         }
