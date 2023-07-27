@@ -129,6 +129,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Credits");
     }
 
+    public void GotoGallerySelect()
+    {
+        SceneManager.LoadScene("GallerySelect");
+    }
+
     public void LoadLevel(int level)
     {
         //print(level + " >= " + levels.Length);
