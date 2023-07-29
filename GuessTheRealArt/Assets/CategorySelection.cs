@@ -9,5 +9,5 @@ public class CategorySelection : MonoBehaviour
     public TextMeshProUGUI title;
     public Button button;
     public Image image;
-    public TextMeshProUGUI score;
+    //public TextMeshProUGUI score;
 }
