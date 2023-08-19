@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
 
     // Caches the level directory json file for the specified category
     // This must be called before a level is loaded -- TODO: Add error handling
-    public void SelectCategory(int category)
+    public void SelectCategory(int category, bool galleryMode = false)
     {
         string jsonPath = Categories[category].source;
         TextAsset jsonAsset = Resources.Load<TextAsset>(jsonPath);
@@ -88,7 +88,11 @@ public class GameManager : MonoBehaviour
         }
 
         level = 1;
-        SceneManager.LoadScene("Main");
+
+        if (galleryMode)
+            SceneManager.LoadScene("GalleryViewer");
+        else
+            SceneManager.LoadScene("Main");
 
 
     }
@@ -123,6 +127,11 @@ public class GameManager : MonoBehaviour
     public void GotoCredits()
     {
         SceneManager.LoadScene("Credits");
+    }
+
+    public void GotoGallerySelect()
+    {
+        SceneManager.LoadScene("GallerySelect");
     }
 
     public void LoadLevel(int level)
@@ -175,6 +184,17 @@ public class GameManager : MonoBehaviour
         return selectedLevels[level - 1];
     }
 
+    public Level GetLevel(int level)
+    {
+        if (level > selectedLevels.Length)
+        {
+            Debug.LogError(level + " is out of bounds when attempting to GetLevel()");
+            return new Level(); // idk it won't let me return null       
+        }
+        else
+            return selectedLevels[level-1];
+    }
+
     private T[] ParseJsonArray<T>(string json)
     {
         string fixedJson = "{\"array\":" + json + "}";
@@ -196,6 +216,7 @@ public struct Level
     public string name;
     public string source;
     public int answer;
+    public string answer_filename;
 }
 
 [System.Serializable]

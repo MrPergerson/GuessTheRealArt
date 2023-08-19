@@ -41,7 +41,6 @@ public class CategorySelector : MonoBehaviour
         var categoryIndex = 0;
         for (int i = 0; i <= groupCount; i++)
         {
-            
             var groupGameObject = Instantiate(categoryGroupPrefab, categoryRoot.transform);
             var selectionGroup = groupGameObject.GetComponent<CategoryGroup>();
 

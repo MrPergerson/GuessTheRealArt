@@ -25,6 +25,11 @@ public class UIManager : MonoBehaviour
         GameManager.instance.QuitGame();
     }
 
+    public void GotoGalleryMode()
+    {
+        GameManager.instance.GotoGallerySelect();
+    }
+
     public void GotoCredits()
     {
         GameManager.instance.GotoCredits();
