@@ -54,7 +54,8 @@ public class CategorySelector : MonoBehaviour
             for (int j = 0; j < selections.Length; j++)
             {
                 var c = categoryIndex;
-                selections[categoryIndex].button.onClick.AddListener(() => GameManager.instance.SelectCategory(c));
+                selections[categoryIndex].button.onClick.AddListener(
+                    () => GameManager.instance.SelectCategory(c));
                 selections[categoryIndex].title.text = categories[c].name;
 
                 var thumbnail = Resources.Load<Sprite>(categories[c].thumbnail);
