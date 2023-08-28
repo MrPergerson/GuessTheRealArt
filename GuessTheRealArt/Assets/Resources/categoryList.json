@@ -1,12 +1,47 @@
 [
     {
-        "name" : "Landscapes",
-        "source" : "leveldir/landscape",
-        "thumbnail" : "landscape/thumbnail"
+        "name" : "Abstract",
+        "source" : "leveldir/level_Abstract_Directory",
+        "thumbnail" : "thumbnail/abstract"
     },
     {
-        "name" : "Blue",
-        "source" : "leveldir/blue",
-        "thumbnail" : "blue/thumbnail"
+        "name" : "Architecture",
+        "source" : "leveldir/level_Architecture_Directory",
+        "thumbnail" : "thumbnail/architecture"
+    },
+    {
+        "name" : "Food",
+        "source" : "leveldir/level_Food_Directory",
+        "thumbnail" : "thumbnail/food"
+    },
+    {
+        "name" : "Landscape",
+        "source" : "leveldir/level_Landscape_Directory",
+        "thumbnail" : "thumbnail/landscape"
+    },
+    {
+        "name" : "People",
+        "source" : "leveldir/level_People_Directory",
+        "thumbnail" : "thumbnail/people"
+    },
+    {
+        "name" : "Plants",
+        "source" : "leveldir/level_Plants_Directory",
+        "thumbnail" : "thumbnail/plants"
+    },
+    {
+        "name" : "Pop",
+        "source" : "leveldir/level_Pop_Directory",
+        "thumbnail" : "thumbnail/pop"
+    },
+    {
+        "name" : "Surreal",
+        "source" : "leveldir/level_Surreal_Directory",
+        "thumbnail" : "thumbnail/surreal"
+    },
+    {
+        "name" : "Vincent Van Gogh",
+        "source" : "leveldir/level_Vincent Van Gogh_Directory",
+        "thumbnail" : "thumbnail/vincent"
     }
 ]

@@ -19,6 +19,7 @@ public class CategorySelector : MonoBehaviour
     public float sliderPosition = 0;
     [SerializeField]private float selectionWidth;
     [SerializeField] private float minPosition;
+    private int groupCount;
 
     private void Awake()
     {
@@ -35,18 +36,23 @@ public class CategorySelector : MonoBehaviour
         rightArrow.onClick.AddListener(NavigateRight); 
 
         var categories = GameManager.instance.Categories;
-        int groupCount = Mathf.FloorToInt(categories.Length / 3);
+        groupCount = Mathf.FloorToInt(categories.Length / 3);
         int leftOvers = categories.Length % 3;
 
         var categoryIndex = 0;
         for (int i = 0; i <= groupCount; i++)
         {
-            var groupGameObject = Instantiate(categoryGroupPrefab, categoryRoot.transform);
-            var selectionGroup = groupGameObject.GetComponent<CategoryGroup>();
-
             int selectionCount = 3;
             if (i == groupCount)
                 selectionCount = leftOvers;
+
+            if (selectionCount == 0) continue;
+
+
+            var groupGameObject = Instantiate(categoryGroupPrefab, categoryRoot.transform);
+            var selectionGroup = groupGameObject.GetComponent<CategoryGroup>();
+
+
 
             var selections = selectionGroup.GetSelections(selectionCount);
 
@@ -54,12 +60,13 @@ public class CategorySelector : MonoBehaviour
             for (int j = 0; j < selections.Length; j++)
             {
                 var c = categoryIndex;
-                selections[categoryIndex].button.onClick.AddListener(() => GameManager.instance.SelectCategory(c));
-                selections[categoryIndex].title.text = categories[c].name;
+                selections[j].button.onClick.AddListener(
+                    () => GameManager.instance.SelectCategory(c));
+                selections[j].title.text = categories[c].name;
 
                 var thumbnail = Resources.Load<Sprite>(categories[c].thumbnail);
                 if (thumbnail != null)
-                    selections[categoryIndex].image.sprite = thumbnail;
+                    selections[j].image.sprite = thumbnail;
                 else
                 {
                     Debug.LogError("Thumbnail.png not found in " + categories[c].thumbnail);
@@ -74,7 +81,7 @@ public class CategorySelector : MonoBehaviour
         }
 
         selectionWidth = categoryGroupPrefab.GetComponent<RectTransform>().rect.width;
-        minPosition = -1 * selectionWidth * (categories.Length - 1);
+        minPosition = -1 * selectionWidth * (groupCount-1);
 
 
     }
@@ -91,6 +98,7 @@ public class CategorySelector : MonoBehaviour
     {
         if (sliderPosition > minPosition)
         {
+
             sliderPosition -= selectionWidth;
         }
     }

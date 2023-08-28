@@ -46,7 +46,7 @@ public class GalleryViewer : MonoBehaviour
 
             //print(path);
             var art = Resources.Load<Sprite>(path);
-            Assert.IsNotNull(art);
+            Assert.IsNotNull(art, "Failed to find file at " + path);
 
             artwork.art.sprite = art;
             artwork.title.text = data.name;

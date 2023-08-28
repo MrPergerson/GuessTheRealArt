@@ -1,0 +1,11 @@
+[
+{ "name": "Albert-Bierstadt-Forest-Sunrise-S", "source": "level_assets/Albert-Bierstadt-Forest-Sunrise-S", "answer": "1", "answer_filename": "aaaaa_Albert-Bierstadt-Forest-Sunrise-S.jpg" },
+{ "name": "Albert-Bierstadt-Rocky-Mountains-S", "source": "level_assets/Albert-Bierstadt-Rocky-Mountains-S", "answer": "1", "answer_filename": "aaaaa_Albert-Bierstadt-Rocky-Mountains-S.jpg" },
+{ "name": "Albert-Bierstadt-Rustic-Mill-S", "source": "level_assets/Albert-Bierstadt-Rustic-Mill-S", "answer": "1", "answer_filename": "aaaaa_Albert-Bierstadt-Rustic-Mill-S.jpg" },
+{
+  "name": "Albert-Bierstadt-Staubbach-Falls-Near-Lauterbrunnen-Switzerl",
+  "source": "level_assets/Albert-Bierstadt-Staubbach-Falls-Near-Lauterbrunnen-Switzerl",
+  "answer": "1",
+  "answer_filename": "aaaaa_Albert-Bierstadt-Staubbach-Falls-Near-Lauterbrunnen-Switzerl.jpg"
+}
+]
